@@ -9,7 +9,7 @@ const MobileMenu = () => {
     console.log(isOpen);
 
     return (
-        <div className=''>
+        <div className='md:hidden'>
             <div className='flex flex-col gap-[4.5px]'
                 onClick={() => setIsOpen((prev) => !prev)}
             >
