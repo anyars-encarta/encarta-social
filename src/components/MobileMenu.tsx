@@ -6,8 +6,6 @@ import React, { useState } from 'react'
 const MobileMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
 
-    console.log(isOpen);
-
     return (
         <div className='md:hidden'>
             <div className='flex flex-col gap-[4.5px]'
