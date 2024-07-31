@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const Interactions = () => {
     return (
-        <div className='flex items-center justify-between text-sm mt-4 flex-wrap'>
+        <div className='flex items-center justify-between text-sm my-4 flex-wrap'>
             {/* LEFT */}
             <div className='flex items-center gap-8'>
                 <div className='flex gap-4 items-center bg-slate-50 p-2 rounded-xl'>
