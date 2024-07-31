@@ -14,7 +14,17 @@ const Post = () => {
             </div>
 
             {/* DESCRIPTION*/}
-            <div className=''></div>
+            <div className='flex flex-col gap-4'>
+                <div className='w-full min-h-96 relative'>
+                    <Image src='https://images.pexels.com/photos/26997905/pexels-photo-26997905/free-photo-of-woman-running-in-golden-field.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load' fill alt='' className='object-cover rounded-md' />
+                </div>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At corporis iure sunt
+                    dolor quas ipsam quidem temporibus quae maxime suscipit et, deserunt distinctio
+                    aliquam quis reiciendis vero eaque dolorem voluptatibus.
+                </p>
+            </div>
 
             {/* INTERACTIONS */}
             <div className=''></div>
