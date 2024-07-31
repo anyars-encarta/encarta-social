@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Interactions from "./Interactions"
 
 const Post = () => {
     return (
@@ -27,7 +28,7 @@ const Post = () => {
             </div>
 
             {/* INTERACTIONS */}
-            <div className=''></div>
+            <Interactions />
         </div>
     )
 }
