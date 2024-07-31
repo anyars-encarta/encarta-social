@@ -12,7 +12,7 @@ const Post = () => {
                     <span className='font-medium'>John Doe</span>
                 </div>
 
-                <Image src='/more.png' width={16} height={16} alt='' />
+                <Image src='/more.png' width={16} height={16} alt='' className='cursor-pointer' />
             </div>
 
             {/* DESCRIPTION*/}
