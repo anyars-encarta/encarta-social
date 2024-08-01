@@ -3,6 +3,9 @@ import LeftMenu from "@/components/LeftMenu"
 import RightMenu from "@/components/RightMenu"
 import AddPost from "@/components/AddPost"
 import Feed from "@/components/Feed"
+import { currentUser } from '@clerk/nextjs/server'
+
+// const user = await currentUser();
 
 const Homepage = () => {
   return (
