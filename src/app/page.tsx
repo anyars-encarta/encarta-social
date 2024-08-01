@@ -12,7 +12,7 @@ const Homepage = () => {
     <div className='flex gap-6 pt-6'>
       {/* LEFT */}
       <div className='hidden xl:block w-[20%]'>
-        <LeftMenu />
+        <LeftMenu type='home' />
       </div>
 
       {/* CENTER */}
