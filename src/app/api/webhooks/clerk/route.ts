@@ -62,7 +62,9 @@ export async function POST(req: Request) {
           id: evt.data.id,
           username: JSON.parse(body).data.username,
           avatar: JSON.parse(body).data.image_url || '/noAvatar.png',
-          cover: '/noCover.png'
+          cover: '/noCover.png',
+          name: JSON.parse(body).data.firstName,
+          surname: JSON.parse(body).data.lastName,
         }
       })
 
@@ -82,6 +84,8 @@ export async function POST(req: Request) {
         data: {
           username: JSON.parse(body).data.username,
           avatar: JSON.parse(body).data.image_url || '/noAvatar.png',
+          name: JSON.parse(body).data.firstName,
+          surname: JSON.parse(body).data.lastName,
         }
       })
 
