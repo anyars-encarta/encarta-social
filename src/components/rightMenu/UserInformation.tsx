@@ -1,7 +1,9 @@
 import prisma from '@/lib/client';
+import { auth } from '@clerk/nextjs/server';
 import { User } from '@prisma/client';
 import Image from 'next/image'
 import Link from 'next/link'
+import UserInfoCardInteraction from './UserInfoCardInteraction';
 
 const UserInformation = async ({ user }: { user: User }) => {
     const createdAtDate = new Date(user.createdAt);
@@ -10,7 +12,46 @@ const UserInformation = async ({ user }: { user: User }) => {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-    })
+    });
+
+    let isUserBlocked = false;
+    let isFollowing = false;
+    let isFollowingSent = false;
+
+    const { userId: currentUserId } = auth();
+
+    if (currentUserId) {
+        // BLOCK
+        const blockRes = await prisma.block.findFirst({
+            where: {
+                blockerId: currentUserId,
+                blockedId: user.id,
+            }
+        })
+
+        blockRes ? isUserBlocked = true : isUserBlocked = false;
+
+        // FOLLOWING
+        const followRes = await prisma.follower.findFirst({
+            where: {
+                followerId: currentUserId,
+                followingId: user.id,
+            }
+        })
+
+        followRes ? isFollowing = true : isFollowing = false;
+
+        // FOLLOW REQUEST SENT
+        const followReqRes = await prisma.followRequest.findFirst({
+            where: {
+                senderId: currentUserId,
+                receiverId: user.id,
+            }
+        })
+
+        followReqRes ? isFollowingSent = true : isFollowingSent = false;
+    };
+
     return (
         <div className='p-4 bg-white rounded-lg shadow-md overflow-hidden text-sm flex flex-col gap-4'>
             <div className='flex items-center justify-between font-medium'>
@@ -20,7 +61,7 @@ const UserInformation = async ({ user }: { user: User }) => {
 
             <div className='flex flex-col gap-4 text-gray-500'>
                 <div className='flex items-center gap-2'>
-                    <span className='text-xl text-black'>{(user.name && user.surname) ? user.name + ' ' + user.surname : user.username }</span>
+                    <span className='text-xl text-black'>{(user.name && user.surname) ? user.name + ' ' + user.surname : user.username}</span>
                     <span className='text-sm'>@{user.username}</span>
                 </div>
 
@@ -49,12 +90,17 @@ const UserInformation = async ({ user }: { user: User }) => {
 
                     <div className='flex gap-1 items-center'>
                         <Image src='/date.png' alt='' width={16} height={16} />
-                    <span>Joined {formattedDate}</span>
+                        <span>Joined {formattedDate}</span>
                     </div>
                 </div>
 
-                <button type='button' className='bg-blue-500 text-white text-sm p-2 rounded-md'>Following</button>
-                <span className='self-end text-red-400 cursor-pointer text-xs'>Block User</span>
+                <UserInfoCardInteraction
+                    currentUserId={currentUserId}
+                    userId={user.id}
+                    isUserBlocked={isUserBlocked}
+                    isFollowingSent={isFollowingSent}
+                    isFollowing={isFollowing}
+                />
             </div>
         </div >
     )

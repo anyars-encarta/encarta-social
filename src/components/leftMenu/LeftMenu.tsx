@@ -1,6 +1,6 @@
 import React from 'react';
-import MenuItems from './MenuItems';
-import Ads from './Ads';
+import MenuItems from '../MenuItems';
+import Ads from '../Ads';
 import ProfileCard from './ProfileCard';
 
 const LeftMenu = ({ type }: { type: 'home' | 'profile' }) => {

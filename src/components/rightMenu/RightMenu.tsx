@@ -1,19 +1,25 @@
 import { User } from '@prisma/client'
-import Ads from './Ads'
+import Ads from '../Ads'
 import Birthdays from './Birthdays'
 import FriendRequest from './FriendRequests'
 import UserInformation from './UserInformation'
 import UserMedia from './UserMedia'
+import { Suspense } from 'react'
 
 const RightMenu = ({ user }: { user: User }) => {
-    return (
+  return (
     <div className='flex flex-col gap-6'>
-      {user && (
+      {user ? (
         <>
-          <UserInformation user={user} />
-          <UserMedia user={user} />
+          <Suspense fallback='loading...'>
+            <UserInformation user={user} />
+          </Suspense>
+
+          <Suspense fallback='loading...'>
+            <UserMedia user={user} />
+          </Suspense>
         </>
-      )}
+      ) : null}
 
       <FriendRequest />
       <Birthdays />

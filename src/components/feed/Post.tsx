@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Interactions from "./Interactions"
+import Interactions from "../Interactions"
 import Comments from "./Comments"
 
 const Post = () => {
