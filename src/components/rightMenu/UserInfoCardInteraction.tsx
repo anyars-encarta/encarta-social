@@ -8,10 +8,15 @@ const UserInfoCardInteraction = (
     }) => {
     return (
         <>
-            <button type='button' className='bg-blue-500 text-white text-sm p-2 rounded-md'>
-                {isFollowingSent ? 'Friend Request Sent' : isFollowing ? 'Following' : 'Follow'}
-            </button>
-            <span className='self-end text-red-400 cursor-pointer text-xs'>{isUserBlocked ? 'Unblock User' : 'Block User'}</span>
+            <form action=''>
+                <button type='button' className='w-full bg-blue-500 text-white text-sm p-2 rounded-md'>
+                    {isFollowingSent ? 'Friend Request Sent' : isFollowing ? 'Following' : 'Follow'}
+                </button>
+            </form>
+
+            <form action='' className='self-end'>
+                <span className='text-red-400 cursor-pointer text-xs'>{isUserBlocked ? 'Unblock User' : 'Block User'}</span>
+            </form>
         </>
     )
 }
