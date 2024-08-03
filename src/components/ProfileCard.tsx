@@ -22,8 +22,6 @@ const ProfileCard = async () => {
     });
     
     if (!user) return null;
-
-    console.log('User include followers: ', user)
     
     return (
         <div className='p-4 bg-white rounded-lg shadow-md overflow-hidden text-sm flex flex-col gap-6'>
@@ -33,7 +31,7 @@ const ProfileCard = async () => {
             </div>
 
             <div className='h-20 flex flex-col gap-2 items-center'>
-                <span className='font-semibold'>{(user.name && user.surname) ? user.name + ' ' + user.surname : user.username } </span>
+                <span className='font-semibold'>{(user.name && user.surname) ? user.name + ' ' + user.surname : user.username }</span>
 
                 <div className='flex items-center gap-4'>
                     <div className='flex items-center'>
@@ -41,10 +39,10 @@ const ProfileCard = async () => {
                         <Image src='https://images.pexels.com/photos/27255539/pexels-photo-27255539/free-photo-of-woman-in-white-dress-crouching-in-flowers.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load' alt='' width={12} height={12} className='w-3 h-3 object-cover rounded-full' />
                         <Image src='https://images.pexels.com/photos/27255539/pexels-photo-27255539/free-photo-of-woman-in-white-dress-crouching-in-flowers.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load' alt='' width={12} height={12} className='w-3 h-3 object-cover rounded-full' />
                     </div>
-                    <span className='text-xs text-gray-500'>{user?._count.followers} Followers</span>
+                    <span className='text-xs text-gray-500'>{user._count.followers} Followers</span>
                 </div>
 
-                <Link href={`/profile/${userId}`} className='bg-blue-500 text-white text-xs p-2 rounded-md'>My Profile</Link>
+                <Link href={`/profile/${user.username}`} className='bg-blue-500 text-white text-xs p-2 rounded-md'>My Profile</Link>
             </div>
         </div>
     )

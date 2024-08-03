@@ -53,7 +53,7 @@ export async function POST(req: Request) {
   const { id } = evt.data;
   const eventType = evt.type;
   // console.log(`Webhook with and ID of ${id} and type of ${eventType}`)
-  // console.log('Webhook body:', body)
+  // console.log('Webhook body:', JSON.parse(body).data)
 
   if (eventType === 'user.created') {
     try {
@@ -63,8 +63,8 @@ export async function POST(req: Request) {
           username: JSON.parse(body).data.username,
           avatar: JSON.parse(body).data.image_url || '/noAvatar.png',
           cover: '/noCover.png',
-          name: JSON.parse(body).data.firstName,
-          surname: JSON.parse(body).data.lastName,
+          name: JSON.parse(body).data.external_accounts.given_name,
+          surname: JSON.parse(body).data.external_accounts.family_name,
         }
       })
 
@@ -84,8 +84,8 @@ export async function POST(req: Request) {
         data: {
           username: JSON.parse(body).data.username,
           avatar: JSON.parse(body).data.image_url || '/noAvatar.png',
-          name: JSON.parse(body).data.firstName,
-          surname: JSON.parse(body).data.lastName,
+          name: JSON.parse(body).data.external_accounts.given_name,
+          surname: JSON.parse(body).data.external_accounts.family_name,
         }
       })
 
