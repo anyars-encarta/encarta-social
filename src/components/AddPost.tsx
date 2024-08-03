@@ -1,7 +1,10 @@
+import { auth } from '@clerk/nextjs/server';
 import Image from 'next/image'
 import React from 'react'
 
-const AddPost = () => {
+const AddPost = async () => {
+    const { userId } = auth();
+
     return (
         <div className='p-4 bg-white shadow-md rounded-lg flex gap-4 justify-between text-sm'>
             {/* AVATAR */}
@@ -10,10 +13,11 @@ const AddPost = () => {
             {/* POST */}
             <div className='flex-1'>
                 {/* TEXT INPUT WITH EMOJI*/}
-                <div className='flex gap-4'>
-                    <textarea name='' id='' placeholder="What's on your mind?" className='bg-slate-100 rounded-lg flex-1 p-2' />
+                <form action='' className='flex gap-4'>
+                    <textarea name='desc' id='' placeholder="What's on your mind?" className='bg-slate-100 rounded-lg flex-1 p-2' />
                     <Image src='/emoji.png' width={20} height={20} alt='' className='w-5 h-5 cursor-pointer self-end' />
-                </div>
+                    <button>Send</button>
+                </form>
 
                 {/* POST OPTIONS */}
                 <div className='flex items-center gap-4 mt-4 text-gray-400 flex-wrap'>
@@ -26,7 +30,7 @@ const AddPost = () => {
                         <Image src='/addVideo.png' width={20} height={20} alt='' />
                         Videos
                     </div>
-                    
+
                     <div className='flex items-center gap-2 cursor-pointer'>
                         <Image src='/poll.png' width={20} height={20} alt='' />
                         Poll
