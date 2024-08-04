@@ -4,6 +4,7 @@ import { User } from '@prisma/client';
 import { useState } from 'react';
 import Image from "next/image";
 import { updateProfile } from '@/lib/actions';
+import { CldUploadWidget } from 'next-cloudinary';
 
 const UpdateUser = ({ user }: { user: User }) => {
   const [open, setOpen] = useState(false);
@@ -12,13 +13,6 @@ const UpdateUser = ({ user }: { user: User }) => {
     setOpen(false)
   };
 
-  // const update = async () => {
-  //   try {
-  //     await updateProfile(user.id, formData)
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // };
 
   return (
     <div className=''>
@@ -35,6 +29,16 @@ const UpdateUser = ({ user }: { user: User }) => {
             </div>
 
             {/* COVER PICTURE UPLOAD */}
+            <CldUploadWidget uploadPreset="<Your Upload Preset>">
+              {({ open }) => {
+                return (
+                  <button onClick={() => open()}>
+                    Upload an Image
+                  </button>
+                );
+              }}
+            </CldUploadWidget>
+
             <div className='flex flex-col gap-4 my-4'>
               <label htmlFor='cover'>Cover Picture</label>
 
