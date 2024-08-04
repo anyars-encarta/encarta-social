@@ -49,8 +49,8 @@ const UpdateUser = ({ user }: { user: User }) => {
 
               {/* INPUT */}
               <div className='flex flex-col gap-4'>
-                <label htmlFor='firstName' className='text-xs text-gray-500'>First Name</label>
-                <input type='text' id='firstName' name='firstName' placeholder={user.name || 'John'} className='ring-1 ring-gray-300 p-[13px] rounded-md text-sm' />
+                <label htmlFor='name' className='text-xs text-gray-500'>First Name</label>
+                <input type='text' id='name' name='name' placeholder={user.name || 'John'} className='ring-1 ring-gray-300 p-[13px] rounded-md text-sm' />
               </div>
 
               {/* INPUT */}
