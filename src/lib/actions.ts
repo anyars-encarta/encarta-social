@@ -88,7 +88,7 @@ export const switchBlock = async (userId: string) => {
     }
 }
 
-export const acceptFollowRequest = async(userId: string) => {
+export const acceptFollowRequest = async (userId: string) => {
     const { userId: currentUserId } = auth();
 
     if (!currentUserId) {
@@ -124,7 +124,7 @@ export const acceptFollowRequest = async(userId: string) => {
     }
 }
 
-export const declineFollowRequest = async(userId: string) => {
+export const declineFollowRequest = async (userId: string) => {
     const { userId: currentUserId } = auth();
 
     if (!currentUserId) {
@@ -146,6 +146,22 @@ export const declineFollowRequest = async(userId: string) => {
                 },
             });
         };
+
+    } catch (e) {
+        console.log(e);
+        throw new Error('Something went wrong');
+    }
+}
+
+export const updateProfile = async (formData: FormData) => {
+    // const { userId: currentUserId } = auth();
+
+    // if (!currentUserId) {
+    //     throw new Error('User is not authenticated')
+    // };
+const fields = Object.fromEntries(formData)
+console.log('Form Data: ', fields)
+    try {
         
     } catch (e) {
         console.log(e);
