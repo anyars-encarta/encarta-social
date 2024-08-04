@@ -58,7 +58,7 @@ const UserInformation = async ({ user }: { user: User }) => {
             <div className='flex items-center justify-between font-medium'>
                 <span className='text-gray-500'>User Information</span>
                 {currentUserId === user.id ? (
-                    <UpdateUser />
+                    <UpdateUser user={user} />
                 ) : (
                 <Link href='/' className='text-blue-500 text-xs'>
                     See all
