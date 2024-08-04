@@ -1,17 +1,24 @@
 'use client';
 
 import { User } from '@prisma/client';
-import { useState } from 'react';
+import { useActionState, useState } from 'react';
 import Image from "next/image";
 import { updateProfile } from '@/lib/actions';
 import { CldUploadWidget } from 'next-cloudinary';
+import { useRouter } from 'next/navigation';
+import UpdateButton from './UpdateButton';
 
 const UpdateUser = ({ user }: { user: User }) => {
   const [open, setOpen] = useState(false);
-const [cover, setCover] = useState<any>('');
+  const [cover, setCover] = useState<any>('');
+
+  const router = useRouter();
+
+  const [state, formAction] = useActionState(updateProfile, { success: false, error: false });
 
   const handleClose = () => {
     setOpen(false)
+    state.success && router.refresh();
   };
 
   return (
@@ -20,7 +27,7 @@ const [cover, setCover] = useState<any>('');
 
       {open && (
         <div className='absolute w-screen h-screen top-0 left-0 bg-black bg-opacity-65 flex items-center justify-center z-50'>
-          <form action={(formData) => updateProfile(formData, cover?.secure_url)} className='p-12 bg-white rounded-lg shadow-md flex flex-col gap-2 w-full md:w-1/2 xl:w-1/3 relative'>
+          <form action={(formData) => formAction({ formData, cover: cover?.secure_url || '' })} className='p-12 bg-white rounded-lg shadow-md flex flex-col gap-2 w-full md:w-1/2 xl:w-1/3 relative'>
             {/* TITLE */}
             <h1>Update Profile</h1>
 
@@ -91,8 +98,10 @@ const [cover, setCover] = useState<any>('');
               </div>
             </div>
 
-            <button className='bg-blue-500 p-2  mt-2 rounded-md text-white'>Update</button>
-
+            {/* <button className='bg-blue-500 p-2  mt-2 rounded-md text-white'>Update</button> */}
+            <UpdateButton />
+            {state.success && <span className='text-green-500 text-center'>Profile has been updated!</span>}
+            {state.error && <span className='text-red-500 text-center'>Something went wrong!</span>}
             <div className='absolute text-lg right-2 top-3 cursor-pointer' onClick={handleClose}>X</div>
           </form>
 

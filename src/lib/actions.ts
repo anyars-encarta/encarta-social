@@ -154,11 +154,14 @@ export const declineFollowRequest = async (userId: string) => {
     }
 }
 
-export const updateProfile = async (formData: FormData, cover: string) => {
+export const updateProfile = async (prevState: {success: boolean, error: boolean}, payload:{formData: FormData, cover: string}) => {
+
+    const { formData, cover } = payload;
+
     const { userId } = auth();
 
     if (!userId) {
-        throw new Error('User is not authenticated')
+        return {success: false, error: true}
     };
 
     const fields = Object.fromEntries(formData)
@@ -182,7 +185,7 @@ export const updateProfile = async (formData: FormData, cover: string) => {
 
     if (!validatedFields.success) {
         console.log(validatedFields.error.flatten().fieldErrors)
-        return "err"
+        return {success: false, error: true}
     };
 
     try {
@@ -191,9 +194,11 @@ export const updateProfile = async (formData: FormData, cover: string) => {
                 id: userId,
             },
             data: validatedFields.data
-        })
+        });
+
+        return {success: true, error: false}
     } catch (e) {
         console.log(e);
-        throw new Error('Something went wrong');
+        return {success: false, error: true}
     }
 }
