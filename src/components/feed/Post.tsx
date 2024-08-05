@@ -20,18 +20,20 @@ const Post = ({ post }: { post: FeedPostType }) => {
 
             {/* DESCRIPTION*/}
             <div className='flex flex-col gap-4'>
-                <div className='w-full min-h-96 relative'>
-                    {post.img && <Image src={post.img} fill alt='' className='object-cover rounded-md' />}
-                </div>
+                {post.img && (
+                    <div className='w-full min-h-96 relative'>
+                        <Image src={post.img} fill alt='' className='object-cover rounded-md' />
+                    </div>
+                )}
 
                 <p>{post.desc}</p>
             </div>
 
             {/* INTERACTIONS */}
-            <Interactions postId={post.id} likes={post.likes.map((like) => like.userId)} commentNumber={post._count.comments}/>
+            <Interactions postId={post.id} likes={post.likes.map((like) => like.userId)} commentNumber={post._count.comments} />
 
             {/* COMMENTS */}
-            <Comments postId={post.id}/>
+            <Comments postId={post.id} />
         </div>
     )
 }

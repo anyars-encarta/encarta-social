@@ -36,7 +36,7 @@ const UpdateUser = ({ user }: { user: User }) => {
             </div>
 
             {/* COVER PICTURE UPLOAD */}
-            <CldUploadWidget uploadPreset="social" onSuccess={(result) => setCover(result.info)}>
+            <CldUploadWidget uploadPreset="social" onSuccess={(result, { widget }) => { setCover(result.info); widget.close() }}>
               {({ open }) => {
                 return (
                   <div className='flex flex-col gap-4 my-4' onClick={() => open()} >
@@ -50,7 +50,6 @@ const UpdateUser = ({ user }: { user: User }) => {
                 );
               }}
             </CldUploadWidget>
-
 
             {/* INPUT WRAPPER */}
             <div className='flex flex-wrap justify-between gap-2 xl:gap-4'>

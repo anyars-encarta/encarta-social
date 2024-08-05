@@ -4,8 +4,6 @@ import RightMenu from "@/components/rightMenu/RightMenu"
 import AddPost from "@/components/AddPost"
 import Feed from "@/components/feed/Feed"
 
-// const user = await currentUser();
-
 const Homepage = () => {
   return (
     <div className='flex gap-6 pt-6'>
