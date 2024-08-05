@@ -223,7 +223,7 @@ export const switchLike = async (postId: string) => {
                     id: existingLike.id
                 },
             });
-        } 
+        }
         else {
             await prisma.like.create({
                 data: {
@@ -239,7 +239,7 @@ export const switchLike = async (postId: string) => {
 }
 
 export const addComment = async (postId: string, desc: string) => {
-    const {userId} = auth();
+    const { userId } = auth();
 
     if (!userId) throw new Error('User is not authenticated!');
 
@@ -285,6 +285,45 @@ export const addPost = async (formData: FormData, img: string) => {
         });
 
         revalidatePath('/')
+    } catch (e) {
+        console.log(e);
+        throw new Error('Something went wrong!')
+    }
+}
+
+export const addStory = async (img: string) => {
+    const { userId } = auth();
+
+    if (!userId) throw new Error('User is not authenticated!');
+
+    try {
+        const exisitingStory = await prisma.story.findFirst({
+            where: {
+                userId,
+            },
+        });
+
+        if (exisitingStory) {
+            await prisma.story.delete({
+                where: {
+                    id: exisitingStory.id 
+                }
+            })
+        };
+
+       const createdStory = await prisma.story.create({
+            data: {
+                userId,
+                img,
+                expiresAt: new Date(Date.now() + 24 + 60 + 60 + 1000),
+            },
+            include: {
+                user: true,
+            },
+        });
+
+        return createdStory;
+        
     } catch (e) {
         console.log(e);
         throw new Error('Something went wrong!')
