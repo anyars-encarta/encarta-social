@@ -52,7 +52,7 @@ const Interactions = ({ postId, likes, commentNumber }: { postId: string, likes:
                 <div className='flex gap-4 items-center bg-slate-50 p-2 rounded-xl'>
                     <Image src='/comment.png' width={16} height={16} alt='' className='cursor-pointer' />
                     <span className='text-gray-300'>|</span>
-                    <span className='text-gray-500'>0<span className='hidden md:inline'> Comments</span></span>
+                    <span className='text-gray-500'>{commentNumber}<span className='hidden md:inline'> Comments</span></span>
                 </div>
             </div>
 
