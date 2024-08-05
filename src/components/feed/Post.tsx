@@ -31,7 +31,7 @@ const Post = ({ post }: { post: FeedPostType }) => {
             <Interactions postId={post.id} likes={post.likes.map((like) => like.userId)} commentNumber={post._count.comments}/>
 
             {/* COMMENTS */}
-            <Comments />
+            <Comments postId={post.id}/>
         </div>
     )
 }
