@@ -315,7 +315,7 @@ export const addStory = async (img: string) => {
             data: {
                 userId,
                 img,
-                expiresAt: new Date(Date.now() + 24 + 60 + 60 + 1000),
+                expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
             },
             include: {
                 user: true,

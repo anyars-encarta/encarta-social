@@ -23,7 +23,7 @@ const StoryList = ({ stories, userId }: { stories: StoryWithUser[], userId: stri
             id: uuidv4(),
             img: img.secure_url,
             createdAt: new Date(Date.now()),
-            expiresAt: new Date(Date.now() + 24 + 60 + 60 + 1000),
+            expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
             userId,
             user: {
                 id: userId,
