@@ -6,7 +6,6 @@ import { Post as PostType, User } from "@prisma/client"
 type FeedPostType = PostType & { user: User } & { likes: [{ userId: string }] } & { _count: { comments: number } }
 
 const Post = ({ post }: { post: FeedPostType }) => {
-    console.log('The Posts: ', post)
     return (
         <div className='flex flex-col gap-4'>
             {/* USER */}
