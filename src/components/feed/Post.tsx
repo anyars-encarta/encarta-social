@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Interactions from "../Interactions"
+import Interactions from "./Interactions"
 import Comments from "./Comments"
 import { Post as PostType, User } from "@prisma/client"
 
@@ -29,7 +29,7 @@ const Post = ({ post }: { post: FeedPostType }) => {
             </div>
 
             {/* INTERACTIONS */}
-            <Interactions likes={post.likes} comments={post._count}/>
+            <Interactions postId={post.id} likes={post.likes.map((like) => like.userId)} commentNumber={post._count.comments}/>
 
             {/* COMMENTS */}
             <Comments />
