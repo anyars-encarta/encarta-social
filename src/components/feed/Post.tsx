@@ -2,6 +2,11 @@ import Image from "next/image"
 import Interactions from "./Interactions"
 import Comments from "./Comments"
 import { Post as PostType, User } from "@prisma/client"
+import { Suspense } from "react"
+import PostActions from "./PostActions"
+import { auth } from "@clerk/nextjs/server"
+
+const {userId } = auth();
 
 type FeedPostType = PostType & { user: User } & { likes: [{ userId: string }] } & { _count: { comments: number } }
 
@@ -15,7 +20,7 @@ const Post = ({ post }: { post: FeedPostType }) => {
                     <span className='font-medium'>{(post.user.name && post.user.surname) ? post.user.name + ' ' + post.user.surname : post.user.username}</span>
                 </div>
 
-                <Image src='/more.png' width={16} height={16} alt='' className='cursor-pointer' />
+                {userId === post.user.id && <PostActions postId={post.id} />}
             </div>
 
             {/* DESCRIPTION*/}
@@ -30,10 +35,14 @@ const Post = ({ post }: { post: FeedPostType }) => {
             </div>
 
             {/* INTERACTIONS */}
-            <Interactions postId={post.id} likes={post.likes.map((like) => like.userId)} commentNumber={post._count.comments} />
+            <Suspense fallback='Loading...'>
+                <Interactions postId={post.id} likes={post.likes.map((like) => like.userId)} commentNumber={post._count.comments} />
+            </Suspense>
 
             {/* COMMENTS */}
-            <Comments postId={post.id} />
+            <Suspense fallback='Loading...'>
+                <Comments postId={post.id} />
+            </Suspense>
         </div>
     )
 }
