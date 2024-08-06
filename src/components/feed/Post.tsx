@@ -6,11 +6,10 @@ import { Suspense } from "react"
 import PostActions from "./PostActions"
 import { auth } from "@clerk/nextjs/server"
 
-const {userId } = auth();
-
 type FeedPostType = PostType & { user: User } & { likes: [{ userId: string }] } & { _count: { comments: number } }
 
 const Post = ({ post }: { post: FeedPostType }) => {
+    const { userId } = auth();
     return (
         <div className='flex flex-col gap-4'>
             {/* USER */}
