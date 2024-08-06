@@ -5,8 +5,20 @@ import FriendRequest from './FriendRequests'
 import UserInformation from './UserInformation'
 import UserMedia from './UserMedia'
 import { Suspense } from 'react'
+import { auth } from '@clerk/nextjs/server'
+import prisma from '@/lib/client'
 
-const RightMenu = ({ user }: { user: User }) => {
+const RightMenu = async () => {
+  const { userId } = auth();
+  
+  if (!userId) throw new Error('User is not authenticated!');
+  
+  const user = await prisma.user.findFirst({
+    where: {
+      id: userId,
+    },
+  });
+
   return (
     <div className='flex flex-col gap-6'>
       {user ? (
