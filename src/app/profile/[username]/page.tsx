@@ -87,7 +87,7 @@ const ProfilePage = async ({ params }: { params: { username: string } }) => {
 
       {/* RIGHT */}
       <div className='hidden lg:block w-[30%]'>
-        <RightMenu user={user} />
+        <RightMenu />
       </div>
     </div>
   )
