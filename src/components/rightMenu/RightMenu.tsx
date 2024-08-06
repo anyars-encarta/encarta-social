@@ -1,11 +1,9 @@
-import { User } from '@prisma/client'
 import Ads from '../Ads'
 import Birthdays from './Birthdays'
 import FriendRequest from './FriendRequests'
 import UserInformation from './UserInformation'
 import UserMedia from './UserMedia'
 import { Suspense } from 'react'
-import { useUser } from '@clerk/nextjs'
 import { auth } from '@clerk/nextjs/server'
 import prisma from '@/lib/client'
 
