@@ -1,4 +1,3 @@
-import { User } from '@prisma/client'
 import Ads from '../Ads'
 import Birthdays from './Birthdays'
 import FriendRequest from './FriendRequests'
