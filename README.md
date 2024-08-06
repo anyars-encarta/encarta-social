@@ -4,12 +4,12 @@
 
  <!-- LOGO -->
 
-  <img src="./assets/readme.png" alt="logo" width="160"  height="auto" />
+  <img src="/public/readme.png" alt="logo" width="160"  height="auto" />
   <br/>
 
 <!-- MAIN HEADING -->
 
-  <h3><b>Real Estate</b></h3>
+  <h3><b>Encarta Social</b></h3>
 
 </div>
 
@@ -39,30 +39,27 @@
 <!-- INTRO -->
 # 📖 Real Estate<a name="about-project"></a>
 
-> Real Estate is a full-stack website that allows users to create posts of real estates. Users could also search for, rent or buy real estates. They could also saved posts to lists. There is also image slider functionality to browse through images of properties. The locations of the properties are shown on a map. The website also features a realtime chat functionality.
+> Encarta Social is a social media app that allows users to make posts, like and comment on posts, follow each other with friend requests, and post stories that visible for only 24 hours.
 
 ## 🛠 Built With <a name="built-with"></a>
 1. React
-2. SASS
+2. Next.js
 3. MongoDb
-4. Socket.io
-5. Zustand
-6. Prisma
-7. Express
-8. JSON Web Token
+4. Clerk
+5. Prisma
+6. Cloudinary
+
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
   <summary>Client</summary>
   <ul>
     <li><a href="https://reactjs.org/">React</a></li>
-    <li><a href="https://sass-lang.com/">SASS</a></li>
+    <li><a href="https://nextjs.org/">Next.js</a></li>
     <li><a href="https://www.mongodb.com/">MongoDb</a></li>
-    <li><a href="https://socket.io/">Socke.io</a></li>
-    <li><a href="https://docs.pmnd.rs/zustand/getting-started/introduction/">Zustand</a></li>
+    <li><a href="https://clerk.com/">Clerk</a></li>
     <li><a href="https://www.prisma.io/">Prisma</a></li>
-    <li><a href="https://expressjs.com/">ExpressJS</a></li>
-    <li><a href="https://jwt.io/">JSON Web Token</a></li>
+    <li><a href="https://cloudinary.com/">Cloudinary</a></li>
   </ul>
 </details>
 
@@ -72,10 +69,10 @@
 
 > - Create User Profiles
 > - Update User Profiles
-> - Add Real Estate Posts
-> - Search Real Estates
-> - Save Posts to Lists
-> - Realtime Chat with Users
+> - Add or delete Posts
+> - Send, Accept, or decline friend request
+> - Like and Comment on posts
+> - Post 24-hour Stories
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,8 +91,8 @@ LIVE DEMO
 > To get a local copy of the project, use this link:
 > 
 ```sh
-cd real-estate-full-stack
-https://github.com/anyars-encarta/real-estate-full-stack.git
+cd encarta-social
+https://github.com/anyars-encarta/encarta-social.git
 ```
 
 <!-- SETUP -->
@@ -104,17 +101,7 @@ https://github.com/anyars-encarta/real-estate-full-stack.git
 To setup this project, run this command:
 
 ```sh
-cd api
-node --watch app.js
-```
-
-```sh
-cd socket
-node --watch app.js
-```
-
-```sh
-cd client
+cd encarta-social
 npm run dev
 ```
 ### Prerequisites
@@ -134,17 +121,7 @@ Install this project with Iroko.
 To run the project, execute the following command:
 
 ```sh
-cd api
-node --watch app.js
-```
-
-```sh
-cd socket
-node --watch app.js
-```
-
-```sh
-cd client
+cd encarta-social
 npm run dev
 ```
 ### Run tests
@@ -158,7 +135,8 @@ You can deploy this project using:
 > 1. Netlify
 > 2. Vercel
 > 3. Render
-> 4. Any Hosting site
+> 4. Hostinger
+> 5. Any Hosting site
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,9 +154,13 @@ You can deploy this project using:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add About Section**
-- [ ] **Add Contact Section**
-- [ ] **Add Agents Section**
+- [ ] **Add View and Edit Posts**
+- [ ] **Add click and view user stories**
+- [ ] **Upload video posts**
+- [ ] **Like and Reply to comments**
+- [ ] **Add upcoming Birthdays**
+- [ ] **Add notifications**
+- [ ] **Add chat messaging**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -213,7 +195,14 @@ Contributions, issues, and feature requests are welcome!
 
 - **What new features should be expected in the next release of the project?**
 
-  - I am currently working on adding About, Contact and Agents sections.
+  - I am currently working on: 
+      - Adding View and Edit Posts
+      - Adding click and view user stories
+      - Uploading video posts
+      - Liking and Reply to comments
+      - Adding upcoming Birthdays
+      - Adding notifications
+      - Adding chat messaging
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
