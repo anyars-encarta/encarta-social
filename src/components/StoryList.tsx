@@ -69,7 +69,7 @@ const StoryList = ({ stories, userId }: { stories: StoryWithUser[], userId: stri
                                 className='w-20 h-20 rounded-full ring-2 object-cover'
                                 onClick={() => open()}
                             />
-                            {img ? (
+                            {img.secure_url ? (
                                 <form action={add}>
                                     <button className='text-xs bg-blue-500 p-1 rounded-md text-white'>Send</button>
                                 </form>
@@ -77,7 +77,9 @@ const StoryList = ({ stories, userId }: { stories: StoryWithUser[], userId: stri
                                 <span className='font-medium'>Add a story</span>
                             )}
 
-                            <div className='absolute text-6xl text-gray-500 top-1' onClick={() => open()}>+</div>
+                            <div className='absolute text-6xl text-gray-500 top-6 hover:text-white' onClick={() => open()}>
+                                <Image src='/stories.png' alt='' width={32} height={32} />
+                            </div>
                         </div>
                     );
                 }}
