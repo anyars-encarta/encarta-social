@@ -37,7 +37,7 @@
 - [📝 License](#license)
 
 <!-- INTRO -->
-# 📖 Real Estate<a name="about-project"></a>
+# 📖 Encarta Social<a name="about-project"></a>
 
 > Encarta Social is a social media app that allows users to make posts, like and comment on posts, follow each other with friend requests, and post stories that visible for only 24 hours.
 
